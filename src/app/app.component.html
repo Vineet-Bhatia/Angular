@@ -1,0 +1,248 @@
+<h1>Hello Angualar</h1>
+
+<app-login></app-login>
+<app-signup></app-signup>
+<app-profile></app-profile>
+
+<h2>Hello Heading 2</h2>
+
+<app-login></app-login>
+
+<h2>Function call on button click</h2>
+<button class='btn' name="login" (click)="handleEvent($event)">Click Me</button>
+
+<hr>
+<h1>Event in Angualar</h1>
+
+<br>
+<br>
+<div
+(mouseenter)="handleEvent($event)"
+style="background-color: green;width: 100px;height: 100px;">
+</div>
+<br>
+<br>
+
+<div
+(mouseleave)="handleEvent($event)" style="background-color: rgb(101, 102, 138);width: 100px;height: 100px;">
+</div>
+<bR>
+<br>
+<input type="text"
+(focus)="handleEvent($event)"
+(blur)="handleEvent($event)"
+(input)="handleEvent($event)"
+name="user">
+
+<hr>
+<h1>Get & set value</h1>
+<br>
+<h3>User Name is {{displayName}}</h3>
+<br>
+<input type="text" value="{{name}}" (input)="getName($event)" placeholder="Enter Your Name">
+<br>
+<button (click)="showName()">Get Name</button>
+
+<button (click)="SetName()"> Set Name</button>
+
+<hr>
+<h3>Email : {{email}}</h3>
+<input type="text"  value="{{email}}" placeholder="Enter email" #emailField>
+<button (click)="getEmail(emailField.value)">Get Email</button>
+<button (click)="setEmail()">Set Email</button>
+
+<hr>
+<h3>how to apply if | else| control statement inangular</h3>
+
+
+<!-- @if(x==5){
+  <div style=" height: 100px; width: 100px ; background-color: bisque;">
+
+  </div>
+} -->
+<br>
+<button (click)="hide()">Hide</button>
+<button (click)="show()">Show</button>
+<button (click)="toggle()">Toggle</button>
+@if(display){
+  <div style=" height: 100px; width: 100px ; background-color: bisque;">
+
+  </div>
+}
+
+<hr>
+
+<br>
+<button (click)="toggles()">{{toggleDiv?'show gold div':'show grey div'}}</button>
+@if(toggleDiv){
+  <div style=" height: 100px; width: 100px ; background-color: rgb(215, 131, 28);">
+
+  </div>
+}
+@else {
+  <div style=" height: 100px; width: 100px ; background-color: rgb(207, 204, 200);">
+
+  </div>
+`
+}
+
+<hr>
+<br>
+<h3>Switch statement in Angular</h3>
+<button (click)="handlecolor('red')">Red</button>
+<button (click)="handlecolor('green')">Green</button>
+<button (click)="handlecolor('yellow')">Yellow</button>
+<button (click)="handlecolor('blue')">Blue</button>
+<button (click)="handlecolor('gold')">Gold</button>
+<input type="text" placeholder="Enter color"  (input)="changecolor($event)">
+
+@switch(color){
+  @case('red'){
+    <h1 style="background-color: red;">Red Color</h1>
+  }
+  @case('green'){
+    <h1 style="background-color: green;">Green Color</h1>
+  }
+  @case('yellow'){
+    <h1 style="background-color: yellow;">Yellow Color</h1>
+  }
+  @case('blue'){
+    <h1 style="background-color: rgb(0, 0, 255);">Blue Color</h1>
+  }
+  @default {
+    <h1 style="background-color: rgb(2, 2, 17); color: aliceblue;">No Color Match</h1>
+  }
+}
+
+<hr>
+<br>
+
+@for (item of user; track item) {
+  <h2>{{item}}</h2>
+}
+
+@for(item of students;track item.name;let id=$index){
+  <h2>
+    <span>{{id}}</span>
+    <span>{{item.name}}</span>
+    <span>{{item.age}}</span>
+    <span>{{item.email}}</span>
+    <button (click)="getStudentName('item.name')">Get tName</button>
+  </h2>
+}
+
+<hr>
+<h2>Signals</h2>
+<h2>{{count()}}</h2>
+<button (click)="increment()">Upddate</button>
+@if (DisplayHeading) {
+  <h2 style="background-color: green;">Page heading</h2>
+}
+
+<hr>
+<h2>For loop Contextual variables</h2>
+
+@for(item of users;track item;let i=$index;let f=$first;let l=$last){
+  <!-- @if(f||l){
+  <h3 style="background-color: red;">this is our {{i+1}} user and name is {{item}}</h3>
+  }
+  @else{
+    <h3>this is our {{i+1}} user and name is {{item}}</h3>
+  } -->
+
+  @if($odd){
+    <h3 style="color: rgb(121, 116, 116);">this is our {{i+1}} user and name is {{item}}</h3>
+  }
+  @if($even){
+    <h3 style="color: rgb(133, 34, 95);">this is our {{i+1}} user and name is {{item}}</h3>
+  }
+}
+
+<hr>
+
+<h2>Two Way binding</h2>
+
+<input [(ngModel)]="Name" type="text" placeholder="Enter Name">
+
+<h2>{{Name}}</h2>
+
+
+<button (click)="DynamicName()">Set Default Name</button>
+
+<hr>
+<h3>To-Do List</h3>
+
+<input type="text" [(ngModel)]="task" placeholder="enter Name">
+<button (click)="addTask()">Add Task</button>
+
+@for(item of tasklist;track item.id){
+  <ul>
+    <li>{{item.id}}</li>
+    <br>
+    <li>{{item.task}}</li>
+    <br>
+    <li><button (click)="DeleteTask(item.id)">Delete task</button></li>
+  </ul>
+}
+
+<hr>
+<h2>Dynamic styling
+</h2>
+
+<h2 [style.backgroundColor]="colors"  [style.fontSize.pt]="fontsize">
+  This color is done By Dynamic style</h2>
+<h2 [style.fontSize]=" zoom? headingsizeBig:headingsizesmall ">This another example of it</h2>
+<br>
+<button (click)="UpdateheadingSize()">toggle size</button>
+
+<hr>
+<h2>Directives</h2>
+<h1 *ngIf="shows">We are using Derectives of *ngIf</h1>
+
+<ul>
+  <li *ngFor="let x of dir">
+    {{x}}
+  </li>
+</ul>
+
+<ul>
+  <li *ngFor="let x of studentNames">
+    {{x.name}},{{x.age}},{{x.email}}
+  </li>
+</ul>
+
+
+<h3>How to appply if else using Dynamic style</h3>
+
+<div *ngIf="login; else elseBlock">
+  <a href="">logout  </a>
+</div>
+<ng-template #elseBlock>
+  <a href="">login</a>
+</ng-template>
+
+<hr>
+<h2>Routing in Angular </h2>
+<!-- <ul>
+  <li>
+    <a routerLink="/login">Login</a>
+  </li>
+  <li>
+    <a routerLink="/about">About</a>
+  </li>
+  <li>
+    <a routerLink="/contact">Contact</a>
+  </li>
+</ul> -->
+
+<router-outlet/>
+
+
+
+<hr>
+
+<h2>Routing using header</h2>
+
+<app-header></app-header>
+
+
