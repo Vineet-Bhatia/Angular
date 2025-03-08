@@ -1,0 +1,11 @@
+<h2>Home Page</h2>
+<!--
+<a routerLink="/Profile">Go to Profile</a> -->
+<!-- <button (click)="goTOprofile('Peter')">Go to profile page</button> -->
+<h1>User List</h1>
+<ul>
+  @for(user of users;track user.id){
+    <li routerLink="/user/{{user.id}}/{{user.name}}">{{user.name}}</li>
+ }
+</ul>
+
